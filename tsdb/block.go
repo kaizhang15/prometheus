@@ -143,6 +143,8 @@ type BlockMeta struct {
 	// Version of the index format.
 	Version int `json:"version"`
 }
+//TODO
+//	1.Block Ulid, Version?
 
 // BlockStats contains stats about contents of a block.
 type BlockStats struct {

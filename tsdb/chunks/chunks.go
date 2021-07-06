@@ -67,6 +67,9 @@ type Meta struct {
 	MinTime, MaxTime int64
 }
 
+//TODO:
+//	1. When write Meta, store the interval data into Chronos MinTime, MaxTime and Ref(三个数字)
+
 // Iterator iterates over the chunk of a time series.
 type Iterator interface {
 	// At returns the current meta.
