@@ -1,2 +1,5 @@
 Prometheus 2.18.2
 Chronos
+go 1.14.15
+node.js v12.16.2
+yarn v1.22.4
