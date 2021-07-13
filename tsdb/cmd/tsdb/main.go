@@ -14,6 +14,7 @@
 package main
 
 import (
+	"C"
 	"bufio"
 	"context"
 	"fmt"
@@ -42,6 +43,7 @@ import (
 )
 
 func main() {
+	fmt.Printf("In tsdb\n")
 	if err := execute(); err != nil {
 		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)
@@ -49,6 +51,7 @@ func main() {
 }
 
 func execute() (err error) {
+	fmt.Printf("In tsdb execute\n")
 	var (
 		defaultDBPath = filepath.Join("benchout", "storage")
 
