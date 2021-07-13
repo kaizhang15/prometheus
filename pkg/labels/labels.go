@@ -116,6 +116,8 @@ func (ls Labels) MatchLabels(on bool, names ...string) Labels {
 	return matchedLabels
 }
 
+// TODO: Maybe the Hash() func in labels.go can help to be referred as the series id?
+
 // Hash returns a hash value for the label set.
 func (ls Labels) Hash() uint64 {
 	b := make([]byte, 0, 1024)

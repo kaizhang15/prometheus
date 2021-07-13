@@ -639,6 +639,12 @@ func (c *LeveledCompactor) write(dest string, meta *BlockMeta, blocks ...BlockRe
 	return nil
 }
 
+/*
+TODO:
+	1. Modification should be in populateBlock() function and refer to the implementation of C++ version
+	2. Where to put chronos (Hybrid Index) should also be considered according to the structure of go version
+*/
+
 // populateBlock fills the index and chunk writers with new data gathered as the union
 // of the provided blocks. It returns meta information for the new block.
 // It expects sorted blocks input by mint.

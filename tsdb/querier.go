@@ -28,6 +28,13 @@ import (
 	"github.com/prometheus/prometheus/tsdb/tombstones"
 )
 
+/*
+TODO:
+	1. In C++ Version Exp-ITB.cpp, querier->select() return the chunks info.
+	2. Try to break this procedure and directly embed the Hybrid Index.
+ */
+
+
 // querier aggregates querying results from time blocks within
 // a single partition.
 type querier struct {
@@ -189,6 +196,9 @@ type blockQuerier struct {
 	mint, maxt int64
 }
 
+
+//TODO: Mark the Select() func. Block querier.
+
 func (q *blockQuerier) Select(sortSeries bool, hints *storage.SelectHints, ms ...*labels.Matcher) (storage.SeriesSet, storage.Warnings, error) {
 	var base storage.DeprecatedChunkSeriesSet
 	var err error
@@ -299,6 +309,8 @@ func findSetMatches(pattern string) []string {
 	}
 	return matches
 }
+
+// TODO: The func PostingsForMatchers() is index iterator.
 
 // PostingsForMatchers assembles a single postings iterator against the index reader
 // based on the given matchers. The resulting postings are not ordered by series.
@@ -668,6 +680,8 @@ type baseChunkSeries struct {
 	err       error
 }
 
+// TODO: Interface of lookup, which return chunk seriesset. Directly use labels as the series id in Chronos.
+
 // LookupChunkSeries retrieves all series for the given matchers and returns a ChunkSeriesSet
 // over them. It drops chunks based on tombstones in the given reader.
 func LookupChunkSeries(ir IndexReader, tr tombstones.Reader, ms ...*labels.Matcher) (storage.DeprecatedChunkSeriesSet, error) {
@@ -679,6 +693,8 @@ func LookupChunkSeries(ir IndexReader, tr tombstones.Reader, ms ...*labels.Match
 func LookupChunkSeriesSorted(ir IndexReader, tr tombstones.Reader, ms ...*labels.Matcher) (storage.DeprecatedChunkSeriesSet, error) {
 	return lookupChunkSeries(true, ir, tr, ms...)
 }
+
+// TODO: Real implementation of lookup for chunk seriesset.
 
 func lookupChunkSeries(sorted bool, ir IndexReader, tr tombstones.Reader, ms ...*labels.Matcher) (storage.DeprecatedChunkSeriesSet, error) {
 	if tr == nil {
